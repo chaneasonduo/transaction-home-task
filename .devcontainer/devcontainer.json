@@ -17,7 +17,7 @@
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// install perfomance test tool ab
-	"postCreateCommand": "sudo apt-get update && sudo apt-get install -y apache2-utils && sudo apt install -y maven",
+	"postCreateCommand": "sudo apt-get update && sudo apt-get install -y apache2-utils && sudo apt install -y maven && minikube start",
 	"customizations": {
 		"vscode": {
 			"extensions": [

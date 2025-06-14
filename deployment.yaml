@@ -19,9 +19,6 @@ spec:
           image: transaction-app:latest # 替换为你的镜像仓库地址或tag
           ports:
             - containerPort: 8080
-          env:
-            # - name: SPRING_PROFILES_ACTIVE
-            #   value: "prod"
           resources:
             limits:
               memory: "512Mi"
