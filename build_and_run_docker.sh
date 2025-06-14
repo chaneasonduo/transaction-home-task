@@ -3,17 +3,16 @@ set -e
 
 # 获取脚本自身路径，兼容软链接
 SCRIPT_PATH="$(readlink -f "$0")"
-SCRIPT_DIR="$(dirname "$SCRIPT_PATH")"
-PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+SCRIPT_DIR="${SCRIPT_PATH}"
+PROJECT_ROOT="${SCRIPT_DIR}"
 
-cd "$PROJECT_ROOT"
 
 # 1. 打包 Spring Boot 应用
 echo "[STEP 1] Maven 打包..."
 mvn clean package -DskipTests
 
 # 2. 构建 Docker 镜像
-cd "$SCRIPT_DIR"
+
 echo "[STEP 2] Docker 构建镜像..."
 docker build -t transaction-app .
 

@@ -6,9 +6,10 @@
 	"image": "mcr.microsoft.com/devcontainers/java:1-21-bullseye",
 
 	"features": {
-		"ghcr.io/devcontainers/features/java:1": {},
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
-		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {}
+		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
+		// "ghcr.io/devcontainers-extra/features/maven-sdkman:2": {},
+		"ghcr.io/devcontainers-extra/features/apt-get-packages:1": {}
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -16,7 +17,7 @@
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// install perfomance test tool ab
-	"postCreateCommand": "sudo apt-get update && sudo apt-get install -y apache2-utils",
+	"postCreateCommand": "sudo apt-get update && sudo apt-get install -y apache2-utils && sudo apt install -y maven",
 	"customizations": {
 		"vscode": {
 			"extensions": [
