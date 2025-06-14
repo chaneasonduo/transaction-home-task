@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transaction-app
+  labels:
+    app: transaction-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: transaction-app
+  template:
+    metadata:
+      labels:
+        app: transaction-app
+    spec:
+      containers:
+        - name: transaction-app
+          image: transaction-app:latest # 替换为你的镜像仓库地址或tag
+          ports:
+            - containerPort: 8080
+          env:
+            # 示例环境变量，如有需要可添加
+            # - name: SPRING_PROFILES_ACTIVE
+            #   value: "prod"
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "200m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: transaction-app-service
+spec:
+  type: NodePort
+  selector:
+    app: transaction-app
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30080
