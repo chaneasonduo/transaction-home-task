@@ -53,3 +53,8 @@ bash build_and_run_k8s.sh
 ```sh
 mvn test
 ```
+
+## 如何运行简单的性能测试
+```sh
+bash .performanceTests/ab-test.sh
+```
